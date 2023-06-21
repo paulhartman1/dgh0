@@ -18,7 +18,7 @@ export default function Home() {
       <Header />
       <Banner />
       <Schedule />
-      <Gallary images={...images} title='Fine Art' />
+      <Gallary images={...images} title='Fine Arts' />
     </main>
   );
 }

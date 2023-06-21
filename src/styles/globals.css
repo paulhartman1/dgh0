@@ -2,9 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Great Vibes';
+  src: url('../../fonts/GreatVibes-Regular.ttf') format('truetype');
+  /* Add additional formats if available (e.g., woff, woff2) */
+  /* src: url('/fonts/great-vibes.woff') format('woff'),
+         url('/fonts/great-vibes.woff2') format('woff2'); */
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gentium Plus';
+  src: url('../../fonts/GentiumPlus-Regular.ttf') format('truetype');
+  /* Add additional formats if available (e.g., woff, woff2) */
+  /* src: url('/fonts/gentium-plus.woff') format('woff'),
+         url('/fonts/gentium-plus.woff2') format('woff2'); */
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Dancing Script';
+  src: url('../../fonts/DancingScript-VariableFont_wght.ttf') format('truetype');
+  /* Add additional formats if available (e.g., woff, woff2) */
+  /* src: url('/fonts/gentium-plus.woff') format('woff'),
+         url('/fonts/gentium-plus.woff2') format('woff2'); */
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
+  --background-start-rgb: 255, 255, 255;
   --background-end-rgb: 255, 255, 255;
 }
 
@@ -24,4 +58,152 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+header {
+  /*make a black rectnage 90% width*/
+  background-color: black;
+  width: 100%;
+  min-height: 32px;
+  color: whitesmoke;
+
+}
+
+nav {
+  width: 100%;
+  /*align text center*/
+  text-align: center;
+  letter-spacing: 0.214em;
+}
+
+a {
+  color: white;
+}
+
+a:hover {
+  color: #f21515;
+  
+  
+}
+
+.banner-text {
+
+  /*use google font great vibes*/
+  font-family: "Great Vibes", cursive;
+  font-size: 4rem;
+  font-weight: 400;
+  min-height: 0;
+}
+
+.banner-link {
+  font-family: "Gentium Plus", serif;
+  font-size: 1rem;
+  font-weight: 400;
+  /*uppercase*/
+  text-transform: uppercase;
+}
+
+.banner-link:hover {
+  color: blue;
+ 
+}
+
+.banner-image {
+  height: 25rem;
+  width: auto;
+  margin: 0 auto;
+  padding-right: 0px;
+
+}
+
+.banner-image-back {
+  margin: 0 auto;
+  background-color: white;
+  width: fit-content;
+  height: fit-content;
+  border: none;
+  box-shadow: 4px 8px 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.arts-link {
+  color: white;
+  width: 90%;
+  max-width: 800px;
+  height: 56px;
+  background-color: #120AAB; 
+  text-transform: uppercase;
+/*ceneter text*/
+/*vertical align text center*/
+  line-height: 56px;
+
+  text-align: center;
+  font-family: "Gentium Plus", serif;
+  box-shadow: 5px 5px 2px 1px rgba(0, 0, 0, .25);
+  margin: .5rem;
+  
+}
+
+.arts-link:hover {
+  color: #e5e7eb;
+  font-style: inherit;
+  box-shadow: none;
+  background-color: rgb(34, 34, 235);
+  transition: all 0.2s ease-in-out;
+}
+
+.title {
+  font-family: "Dancing Script", cursive;
+  font-size: 3rem;
+  color: #120AAB;
+  text-align: center;
+}
+
+.subtitle {
+  font-family: "Gentium Plus", serif;
+  font-size: 1rem;
+  color: #595959;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+
+.schedule-item-date {
+  font-family: "Gentium Plus", serif;
+  font-size: 1.5rem;
+  color: #120AAB;
+  
+}
+
+.schedule-item-title {
+  font-family: "Gentium Plus", serif;
+  font-size: 16px;
+  color: #000000;
+  font-weight: bolder;
+  text-align: center;
+  margin-top: 10px;
+  text-transform: uppercase;
+
+}
+
+.schedule-item-description {
+  font-family: "Gentium Plus", serif;
+  font-size: 16px;
+  color: #5e5e5e;
+  text-align: center;
+}
+
+.schedule-header {
+  font-family: "Gentium Plus", serif;
+  font-size: 32px;
+  color: #120AAB;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.table-row {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.schedule {
+  padding-top: 20px;
 }

@@ -6,7 +6,7 @@ export default function MyCard(props: any) {
   const alt = props.alt;
   const title = props.title;
   return (
-    <Card isPressable isHoverable css={{  maxHeight:'200px', backgroundColor: 'transparent', border: 'none' }}>
+    <Card isHoverable css={{  maxHeight:'200px', backgroundColor: 'transparent', border: 'none' }}>
       <Card.Body css={{ p: 0 }}>
         <Card.Image
           src={src}
@@ -18,7 +18,7 @@ export default function MyCard(props: any) {
         isBlurred
         css={{
           position: 'absolute',
-          bgBlur: 'rgba(0,0,0,0.5)',
+          bgBlur: 'rgba(123,123,123,0)',
           borderTop: '$borderWeights$light solid rgba(255, 255, 255, 0.2)',
           bottom: 0,
           zIndex: 1,
@@ -26,7 +26,7 @@ export default function MyCard(props: any) {
       >
         <Row>
           <Col>
-            <Text color="#FFF" size={12} css={{ textAlign: 'center' }}>
+            <Text color="#FFF" size={12} css={{ textAlign: 'center' }}  contentEditable>
               {title}
             </Text>
           </Col>

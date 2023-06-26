@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["jsonProtocol"]
+}
+ 
+datasource db {
+  provider = "postgresql"
+  url = "postgres://default:R4BXxc0pWOYU@ep-fancy-frost-396914-pooler.us-east-1.postgres.vercel-storage.com/verceldb?pgbouncer=true&connect_timeout=15"
+  directUrl = "postgres://default:R4BXxc0pWOYU@ep-fancy-frost-396914.us-east-1.postgres.vercel-storage.com/verceldb"
+  shadowDatabaseUrl = "postgres://default:R4BXxc0pWOYU@ep-fancy-frost-396914.us-east-1.postgres.vercel-storage.com/verceldb"
+}
+ 
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  image     String
+  createdAt DateTime @default(now())
+}
+
+model Image {
+  //generate uuid for id
+  id      String  @id @unique
+  name    String
+  type    String  @default("jpeg")
+
+
+}
+
+model Category {
+  id        Int      @id @default(autoincrement())
+  name    String
+}
+
+model ImageCategory {
+  id        Int      @id @default(autoincrement())
+  imageId   String
+  categoryId   Int
+}

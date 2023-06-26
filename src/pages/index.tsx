@@ -12,13 +12,14 @@ export default function Home() {
     { src: '/eagle.webp', alt: 'Indian', title: 'Eagle' },
    
   ];
-  console.log(images);
+ 
   return (
     <main className="flex flex-col items-center justify-between p-5">
       <Header />
       <Banner />
       <Schedule />
       <Gallary images={...images} title='Fine Arts' />
+      
     </main>
   );
 }

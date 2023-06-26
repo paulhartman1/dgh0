@@ -2,6 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 export default function Header() {
   //a black rectangle with 5 links
+  //fetch('/api/users').then((res) => console.log(res.json()));
+ 
   return (
     <header className="flex items-center justify-between">
       <nav>

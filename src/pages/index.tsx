@@ -1,5 +1,5 @@
 import Banner from '@/components/banner';
-import Gallary from '@/components/gallary';
+import GallaryComponent from '@/components/gallary';
 import Header from '@/components/header';
 import Schedule from '@/components/schedule';
 
@@ -18,7 +18,7 @@ export default function Home() {
       <Header />
       <Banner />
       <Schedule />
-      <Gallary images={...images} title='Fine Arts' />
+      <GallaryComponent images={...images} title='Fine Arts' />
       
     </main>
   );

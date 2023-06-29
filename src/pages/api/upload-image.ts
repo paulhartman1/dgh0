@@ -14,7 +14,6 @@ export default async function handler(
       apiVersion: '2006-03-01',
     })
     const id = uuidv4()
-    console.log(id)
     await createImageData(id, req)
     
     const post = await s3.createPresignedPost({
@@ -34,7 +33,6 @@ export default async function handler(
   }
 
 async function createImageData(id: string, req: NextApiRequest) {
-  console.log(req);
   try {
     const image: Image = await prisma.image.create({
       data: {
@@ -43,7 +41,6 @@ async function createImageData(id: string, req: NextApiRequest) {
         type: req.query.fileType as string,
       },
     })
-    console.log(id, image)
   } catch (error) {
     console.error(error)
   }

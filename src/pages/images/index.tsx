@@ -1,24 +1,19 @@
 import { useEffect, useState, useMemo } from 'react';
-import Image from 'next/image';
 import { Dropdown, Input, Grid } from '@nextui-org/react';
-
-import MyCard from '../../components/card';
+import GallaryComponent from '@/components/gallary';
 
 import { Category } from '@prisma/client';
 import prisma from '../../../lib/prisma';
+import { constrainedMemory } from 'process';
 
 export default function Upload() {
-  const [image, setImage] = useState('');
-  const [images, setImages] = useState<Map<string, File>>(new Map());
-  const [cards, setCards] = useState([]);
+  const [imgArray, setImgArray] = useState([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [selected, setSelected] = useState(new Set(['text']));
   const [selectedCategory, setSelectedCategory] = useState(
     new Set(['Select a Category'])
   );
   const [loading, setLoading] = useState(false);
-
-  const [title, setTitle] = useState('');
 
   useEffect(() => {
     Array.from(selectedCategory).join(', ').replaceAll('_', ' '),
@@ -30,68 +25,34 @@ export default function Upload() {
     fetch('/api/categories')
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setCategories(data);
         setLoading(false);
       })
       .catch((err) => console.log(err));
   }, []);
 
-   
-     Array.from(images).map(([filename, file]) => (
-      <MyCard
-        key={filename}
-        src={URL.createObjectURL(file)}
-        alt={filename}
-        title={title}
-      />
-    ));
-
-
-  const uploadPhoto = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const displayImages = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files || [];
-
+    const tempData = [];
     for (let i = 0; i < files.length; i++) {
       const file = files?.[i]!;
       const filename = encodeURIComponent(file.name);
-      setImages(images.set(filename, file));
-      setImage(URL.createObjectURL(file));
+      const title = file.name.substring(0, file.name.lastIndexOf('.'));
+      tempData.push({
+        src: URL.createObjectURL(file),
+        title: title,
+        alt: title,
+      });
     }
-    console.log(images);
+    setImgArray(tempData);
+  };
+
+  const uploadImages = async () => {
+   //find each image in the array and upload it to the database
    
-  
-    // const file = e.target.files?.[0]!;
-    // console.log(e);
-    // const filename = encodeURIComponent(file.name);
-    // const fileType = encodeURIComponent(file.type);
-
-    // setTitle(filename);
-    // setImage(URL.createObjectURL(file));
-
-    // const res = await fetch(
-    //   `/api/upload-image?file=${filename}&fileType=${fileType}`
-    // );
-
-    // const { url, fields } = await res.json();
-    // const formData = new FormData();
-
-    // Object.entries({ ...fields, file }).forEach(([key, value]) => {
-    //   formData.append(key, value as string);
-    // });
-
-    // const upload = await fetch(url, {
-    //   method: 'POST',
-    //   body: formData,
-    // });
-
-    // if (upload.ok) {
-    //   console.log('Uploaded successfully!');
-    // } else {
-    //   console.error('Upload failed.');
-    // }
   };
   return (
-    <div className="p-20">
+    <div>
       <Dropdown>
         <Dropdown.Button flat color="secondary" css={{ tt: 'capitalize' }}>
           {selectedCategory}
@@ -116,36 +77,27 @@ export default function Upload() {
       </Dropdown>
       <button
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        hidden={
-          (typeof selectedCategory === 'string' ? false : true) ||
-          (image ? false : true)
-        }
-        onClick={uploadPhoto}
+        hidden={typeof selectedCategory === 'string' ? false : true}
+        onClick={uploadImages}
       >
         Upload
       </button>
-      {images && (
-        <>
-          <Grid.Container gap={4} justify="center">
-           
-              <Grid key={'index'} xs={6} sm={3}>
-                <MyCard src={image} alt={title} title={title} />
-              </Grid>
-         
-          </Grid.Container>
-        </>
+      {imgArray && (
+        <div className="flex flex-col items-center justify-between p-5">
+          <GallaryComponent images={...imgArray} title={selectedCategory} />
+        </div>
       )}
 
-      {!image && (
+      {
         <>
           <Input
-            onChange={uploadPhoto}
+            onChange={displayImages}
             type="file"
             accept="image/png, image/jpeg"
             multiple
           />
         </>
-      )}
+      }
     </div>
   );
 }

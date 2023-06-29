@@ -5,6 +5,5 @@ export default async function handler(
     res: NextApiResponse
 ) {
     const data = await prisma?.category.findMany();
-    console.log(data);
     res.status(200).json(data);
 }

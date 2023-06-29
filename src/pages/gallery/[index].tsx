@@ -2,6 +2,8 @@ import { useRouter } from 'next/router'
 import { useState } from 'react';
 import {Category} from '@/types/category';
 import Image from 'next/image';
+import GallaryComponent from '@/components/gallary';
+
 export default function Gallery(props: any) {
     const router = useRouter();
     const [categories, setCategories] = useState<Category[]>([]);

@@ -1,16 +1,19 @@
 {
   "name": "dgh",
+  "type": "module",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest --watch --coverage"
   },
   "dependencies": {
     "@nextui-org/react": "^1.0.0-beta.13",
     "@prisma/client": "^4.16.0",
+    "@swc/helpers": "^0.5.1",
     "@types/node": "18.15.11",
     "@types/react": "18.0.35",
     "@types/react-dom": "18.0.11",
@@ -19,15 +22,18 @@
     "aws-sdk": "^2.1402.0",
     "eslint": "8.38.0",
     "eslint-config-next": "13.3.0",
-    "next": "13.3.0",
+    "next": "13.4.7",
     "postcss": "8.4.21",
     "prisma": "^4.16.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tailwindcss": "3.3.1",
-    "typescript": "5.0.4"
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.0.4"
   },
   "devDependencies": {
-    "@types/uuid": "^9.0.2"
+    "@types/jest": "^29.5.3",
+    "@types/uuid": "^9.0.2",
+    "jest-mock-extended": "^3.0.4"
   }
 }

@@ -1,6 +1,6 @@
 import S3 from 'aws-sdk/clients/s3';
 import { NextApiRequest, NextApiResponse } from 'next';
-import prisma from '../../../lib/prisma';
+import prisma from '../../../../lib/prisma';
 
 import { Image } from '@/types/image';
 import { parse } from 'path';

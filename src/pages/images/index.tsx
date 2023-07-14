@@ -4,7 +4,6 @@ import GallaryComponent from '@/components/gallary';
 
 import { Category } from '@prisma/client';
 import prisma from '../../../lib/prisma';
-import { constrainedMemory } from 'process';
 
 export default function Upload() {
   const [imgArray, setImgArray] = useState([]);
@@ -48,11 +47,12 @@ export default function Upload() {
   };
 
   const uploadImages = async () => {
-   //find each image in the array and upload it to the database
-   
+    const formData = new FormData();
+    fetch(`/api/upload-image?file=tester&fileType=png`);
+    console.log(selectedCategory);
   };
   return (
-    <div>
+    <>
       <Dropdown>
         <Dropdown.Button flat color="secondary" css={{ tt: 'capitalize' }}>
           {selectedCategory}
@@ -98,6 +98,6 @@ export default function Upload() {
           />
         </>
       }
-    </div>
+    </>
   );
 }

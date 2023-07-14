@@ -41,6 +41,7 @@ async function createImageData(id: string, req: NextApiRequest) {
         type: req.query.fileType as string,
       },
     })
+    console.log(image);
   } catch (error) {
     console.error(error)
   }
